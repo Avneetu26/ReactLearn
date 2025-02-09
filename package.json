@@ -1,0 +1,29 @@
+{
+  "name": "learn-react",
+  "version": "1.0.0",
+  "description": "Learning react refering Namaste-react",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Avneetu26/ReactLearn.git"
+  },
+  "author": "Avneet Kaur",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Avneetu26/ReactLearn/issues"
+  },
+  "homepage": "https://github.com/Avneetu26/ReactLearn#readme",
+  "devDependencies": {
+    "parcel": "^2.8.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "browsersList": [
+    "last 2 versions"
+  ]
+}
