@@ -24,10 +24,6 @@
     
 }
 
-.body {
-
-}
-
 .restaurant-card {
     width: 150px;
     padding: 5px;
@@ -40,14 +36,22 @@
     cursor: pointer;
 }
 
-.search {
-    padding: 10px;
+.filter {
+    margin: 10px;
+    
+}
 
+.filter-btn {
+    padding: 10px;
+    color: brown;
+    background-color: bisque;
+    border-radius: 5%;
+    cursor: pointer;
 }
 
 .image {
     width: inherit;
-    height: 80px;
+    height: 140px;
 }
 
 .restaurant-container {

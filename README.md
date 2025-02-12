@@ -19,3 +19,20 @@
 - Tree Shaking
 - Different dev and production builds
 - parceljs documentation
+
+/*
+Header
+- Logo
+- Nav Items
+Body 
+- Search
+- RestaurantContainer
+    - RestaurantCard
+        - Image
+        - Name, Star Rating, Cuisine, Delivery Time
+Footer
+- Copyright
+- Links
+- Address
+- Contact
+*/
