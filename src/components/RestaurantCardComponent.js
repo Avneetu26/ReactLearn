@@ -1,16 +1,17 @@
+import { CLOUD_IMAGE } from "../utils/constants";
 
 const RestaurantCardComponent = (props) => {
     const { resData } = props;
-    const {name, logo, ratings, delivery_time_estimate, cuisines} = resData;
+    const {name, avgRating, cuisines, sla, cloudinaryImageId } = resData.info;
     return (
         <div className="restaurant-card">
             <img className="image" 
-            src={logo}
+            src={CLOUD_IMAGE + cloudinaryImageId}
             ></img>
             <div><b>{name}</b></div>
             <div>{cuisines.join(", ")}</div>
-            <div>{ratings.rating_bayesian10_point}</div>
-            <div>{delivery_time_estimate + " mins"}</div>
+            <div>{avgRating}</div>
+            <div>{sla.deliveryTime + " mins"}</div>
         </div>
     )
 }
