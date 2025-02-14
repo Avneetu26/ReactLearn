@@ -104,3 +104,17 @@
     border-radius: 5%;
     cursor: pointer;
 }
+
+.menu-img {
+    height: 40px;
+    width: 40px
+}
+
+.menu-li {
+    list-style-type: none;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
