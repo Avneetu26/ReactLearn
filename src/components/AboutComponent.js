@@ -1,7 +1,15 @@
+import UserComponent from "./UserComponent";
+import UserClass from "./UserClass";
+
 const AboutComponent = () => {
     return (
         <div>
             <h1> This is About Page </h1>
+            <UserClass name={"Avneet Kaur"} 
+                location={"New Jersey"} 
+                contact={"6462767117"}
+                email={"avneetu26@gmail.com"}
+            />
         </div>
     )
 }
