@@ -2,24 +2,14 @@ import { useEffect, useState } from "react";
 import ShimmerComponent from "./ShimmerComponent";
 import { useParams } from "react-router-dom";
 import { CLOUD_IMAGE } from "../utils/Constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenuComponent = () => {
 
-    const [resInfo, setResInfo] = useState(null);
+    // const [resInfo, setResInfo] = useState(null);
     const {resId} = useParams();
 
-    useEffect(() => {
-        fetchMenu();
-    }, []);
-    
-    const fetchMenu = async () => {
-        const data = await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.5462313&lng=73.90395099999999&restaurantId=" + resId);
-
-        const json = await data.json();
-
-        setResInfo(json)
-        // console.log(json);
-    };
+    const resInfo = useRestaurantMenu(resId);
 
     if(resInfo === null) return <ShimmerComponent />;
 
