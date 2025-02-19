@@ -22,9 +22,11 @@
     "process": "^0.11.10"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.0.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.1.5"
+    "react-router-dom": "^7.1.5",
+    "tailwindcss": "^4.0.7"
   },
   "browsersList": [
     "last 2 versions"

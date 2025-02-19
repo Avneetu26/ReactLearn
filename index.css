@@ -1,4 +1,6 @@
-.header {
+@import "tailwindcss";
+
+/* .header {
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
@@ -133,4 +135,4 @@
 .user-details > h2,h3,h4 {
     color: brown;
 
-}
+} */
