@@ -1,37 +1,41 @@
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/Constants";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const HeaderComponent = () => {
     const [btnName, setBtnName] = useState("LogIn");
 
+    const {loggedInUser} = useContext(UserContext);
+
     const onlineStatus = useOnlineStatus();
 
     return (
-        <div className="header">
-            <div className="logo-container">
-                <img className="logo" src={LOGO_URL}/>
+        <div className="flex justify-between bg-purple-100 shadow-lg m-2">
+            <div className="w-16 m-2">
+                <img src={LOGO_URL}/>
             </div>
 
-            <div className="nav-items">
-                <ul>
-                    <li>
+            <div className="flex items-center">
+                <ul className="flex m-4 p-4">
+                    <li className="px-4">
                         Online Status: {onlineStatus ? "Online" : "Offline"}
                     </li>
-                    <li>
+                    <li className="px-4">
                         <Link to={"/"}> Home </Link>
                     </li>
-                    <li>
+                    <li className="px-4">
                         <Link to={"/about"}> About Us </Link>
                     </li>
-                    <li>
+                    <li className="px-4">
                         <Link to={"/contact"}> Contact Us </Link>
                     </li>
-                    <li>
+                    <li className="px-4">
                         <Link to={"/grocery"}> Grocery </Link>
                     </li>
-                    <li>Cart</li>
+                    <li className="px-4">Cart</li>
+                    <li className="px-4">{loggedInUser}</li>
                     <button onClick={() => {
                         if(btnName === 'LogIn') {
                             setBtnName("LogOut");

@@ -1,7 +1,8 @@
 import useOnlineStatus from "../utils/useOnlineStatus";
-import RestaurantCardComponent from "./RestaurantCardComponent";
+import UserContext from "../utils/UserContext";
+import RestaurantCardComponent, { withOpenLabel } from "./RestaurantCardComponent";
 import ShimmerComponent from "./ShimmerComponent";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
 
 const BodyComponent = () => {
@@ -11,6 +12,10 @@ const BodyComponent = () => {
     const [filteredList, setFilteredList] = useState([]);
 
     const [searchText, setSearchText] = useState("");
+
+    const {loggedInUser, setUserName} = useContext(UserContext);
+
+    const RestaurantCardOpen = withOpenLabel(RestaurantCardComponent);
 
     useEffect(() => {
         fetchData()
@@ -22,6 +27,7 @@ const BodyComponent = () => {
         const json = await data.json();
         setResListTemp(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        
     }
 
     const onlineStatus = useOnlineStatus();
@@ -30,26 +36,34 @@ const BodyComponent = () => {
     }
 
     return (resListTemp === undefined || resListTemp.length === 0) ? (<ShimmerComponent/>) : (
-        <div className="body">
+        <div className="bg-pink-100">
             
-            <div className="filter">
-                <button onClick={() => {
-                    setFilteredList(resListTemp.filter((res) => res.info.avgRating > 4.5));
-                }} className="filter-btn">Top rated restaurants</button>
-
-    `           <div className="search">
-                    <input className="searchInput" type="text" value={searchText} onChange={(e) => {
+            <div className="ml-16">
+                
+    `           <div className="m-4 p-4 flex">
+                    <input className="border border-solid border-r-black" type="text" value={searchText} onChange={(e) => {
                         setSearchText(e.target.value)
                     }}></input>
                     <button onClick={() => {
                         setFilteredList(resListTemp.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())));
-                    }} className="searchButton">Search</button>
+                    }} className="mx-2 bg-purple-100 px-3 py-2 cursor-pointer rounded-2xl">Search</button>
+                    <button onClick={() => {
+                        setFilteredList(resListTemp.filter((res) => res.info.avgRating > 4.5));
+                    }} className="mx-2 bg-purple-100 px-3 py-2 cursor-pointer rounded-2xl">Top rated restaurants</button>
+                    <div>
+                        <label className="mx-2">Preferred Name:</label>
+                        <input className="border border-solid border-r-black p-2" type="text" value={loggedInUser} onChange={(e) => setUserName(e.target.value)}/>
+                    </div>
                 </div>
+
             </div>
-            <div className="restaurant-container">
+            <div className="flex flex-wrap justify-center">
                 
             {filteredList.map((restaurant) => (
-                <Link className="link" key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}><RestaurantCardComponent resData={restaurant} /></Link>
+                <Link className="link" key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
+                    {restaurant.info.isOpen ? <RestaurantCardOpen resData={restaurant} /> : <RestaurantCardComponent resData={restaurant} />}
+                    
+                </Link>
             ))}
             </div>
         </div>
