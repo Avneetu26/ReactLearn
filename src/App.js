@@ -9,6 +9,9 @@ import ErrorComponent from "./components/ErrorComponent";
 import RestaurantMenuComponent from "./components/RestaurantMenuComponent"
 import ShimmerComponent from "./components/ShimmerComponent";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import CartComponent from "./components/CartComponent";
 // import GroceryComponent from "./components/GroceryComponent";
 
 // synchronous input
@@ -27,12 +30,14 @@ const AppLayout = () => {
     }, [])
 
     return (
-        <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
-            <div className="app">
-                <HeaderComponent/>
-                <Outlet />
-            </div>
-        </UserContext.Provider>
+        <Provider store={appStore}>
+            <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
+                <div className="app">
+                    <HeaderComponent/>
+                    <Outlet />
+                </div>
+            </UserContext.Provider>
+        </Provider>
     );
 }
 
@@ -64,6 +69,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/grocery",
                 element: <Suspense fallback={<ShimmerComponent />}> <GroceryComponent /> </Suspense> 
+            },
+            {
+                path: "/cart",
+                element: <CartComponent/>
             }
         ],
         errorElement: <ErrorComponent/>

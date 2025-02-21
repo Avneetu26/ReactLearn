@@ -36,3 +36,13 @@ Footer
 - Address
 - Contact
 */
+
+
+<!-- Redux Toolkit
+ - Install libraries - @reduxjs/toolkit and react-redux 
+ - Build our store
+ - Connect store to our app
+ - create a slice (cart)
+ - dispatch an action
+ - selector
+ -->
