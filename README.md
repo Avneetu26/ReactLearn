@@ -46,3 +46,19 @@ Footer
  - dispatch an action
  - selector
  -->
+
+ <!-- Types of Testing
+ - Unit Testing
+ - Integration Testing
+ - End to End Testing
+  -->
+
+  <!-- 
+  Testing env
+  - Install React Testing Library
+  - Install jest
+  - Install babel dependencies
+  - Configure babel
+  - Configure Parcel Config file to disable default babel configuration
+  - Jest Configuration - npx jest --init
+   -->
