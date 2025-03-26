@@ -1,19 +1,24 @@
 import ItemListComponent from "./ItemListComponent";
 
 const RestaurantCategoryComponent = (props) => {
-    const {categories, showItems, setShowIndex} = props;
+    const {categories, showItems, setShowIndex, closeAll} = props;
 
     // const [showItems, setShowItems] = useState(false);
 
     handleClick = () => {
-        setShowIndex();
+        if(showItems) {
+            closeAll();
+        } else {
+            setShowIndex();
+        }
+        
     }
 
     return (
         <div className="w-8/12 mx-auto shadow-lg mb-2">
             <div className=" p-2 text-xl my-6 cursor-pointer flex justify-between" onClick={handleClick}>
                 <span className="text-orange-400 ml-2">{categories.card.card.title} ({categories.card.card.itemCards.length})</span>
-                <span className="text-orange-400 font-medium "> {">"} </span>
+                <span className="text-orange-400 font-medium "> {"v"} </span>
                 
             </div>
 

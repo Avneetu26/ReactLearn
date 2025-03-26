@@ -13,7 +13,7 @@ const ItemListComponent = ({items}) => {
     return (
         <div>
             {items.map((item) => (
-                <div key={item.card.info.id} className="font-sans border-orange-100 border-b-4 text-left flex w-full p-2 justify-between">
+                <div data-testid="fooditems" key={item.card.info.id} className="font-sans border-orange-100 border-b-4 text-left flex w-full p-2 justify-between">
                      <div className="w-2/12 p-2">
                         <img src={`${CLOUD_IMAGE}${item.card.info.imageId}`}/>
                     </div>

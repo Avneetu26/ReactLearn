@@ -41,14 +41,18 @@ const BodyComponent = () => {
             <div className="ml-16">
                 
     `           <div className="m-4 p-4 flex">
-                    <input className="border border-solid border-r-black" type="text" value={searchText} onChange={(e) => {
+                    <input className="border border-solid border-r-black" 
+                    type="text" 
+                    data-testid="searchInput"
+                    value={searchText} 
+                    onChange={(e) => {
                         setSearchText(e.target.value)
                     }}></input>
                     <button onClick={() => {
                         setFilteredList(resListTemp.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())));
                     }} className="mx-2 bg-purple-100 px-3 py-2 cursor-pointer rounded-2xl">Search</button>
                     <button onClick={() => {
-                        setFilteredList(resListTemp.filter((res) => res.info.avgRating > 4.5));
+                        setFilteredList(resListTemp.filter((res) => res.info.avgRating > 4.0));
                     }} className="mx-2 bg-purple-100 px-3 py-2 cursor-pointer rounded-2xl">Top rated restaurants</button>
                     <div>
                         <label className="mx-2">Preferred Name:</label>

@@ -61,4 +61,8 @@ Footer
   - Configure babel
   - Configure Parcel Config file to disable default babel configuration
   - Jest Configuration - npx jest --init
+  - Install jsdom library
+  - Install @babel/preset-react - to make JSX work in test cases
+  - Include @babel/preset-react inside babel config
+  - Install @testing-library/jest-dom
    -->

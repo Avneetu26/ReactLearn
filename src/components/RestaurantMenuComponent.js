@@ -8,7 +8,7 @@ import { useState } from "react";
 const RestaurantMenuComponent = () => {
 
     // const [resInfo, setResInfo] = useState(null);
-    const [showIndex, setShowIndex] = useState(0);
+    const [showIndex, setShowIndex] = useState(null);
     const {resId} = useParams();
 
     const resInfo = useRestaurantMenu(resId);
@@ -32,7 +32,8 @@ const RestaurantMenuComponent = () => {
             <div>
                 {categories.map((c, index) => (
                     <RestaurantCategoryComponent key={c.card?.card?.categoryId} categories={c} 
-                    showItems={index === showIndex ? true : false} setShowIndex={() => setShowIndex(index)}/>
+                    showItems={index === showIndex ? true : false} setShowIndex={() => setShowIndex(index)}
+                    closeAll={() => setShowIndex(null)}/>
                 ))}
             </div>
             
